@@ -1,3 +1,755 @@
-@use "./variables.scss" as *;
+/*
 
-// put your custom CSS here!
+* Soft Paper — An Obsidian Theme
+
+* by Nick Milo
+
+* Version 1.2.1
+
+*
+
+* Based on AnuPpuccin by Anubis (https://github.com/AnubisNekhet/AnuPpuccin)
+
+* AnuPpuccin is licensed under GPL-3.0.
+
+* Original code has been modified and stripped to essentials.
+
+* Support the original author: https://www.buymeacoffee.com/anubisnekhet
+
+*
+
+* License: GPL-3.0
+
+*/
+
+  
+
+/*===============================================================
+
+* STYLE SETTINGS METADATA (პარამეტრების მართვის ბლოკი Obsidian-ისთვის)
+
+*===============================================================*/
+
+  
+
+/* @settings
+
+name: Soft Paper
+
+id: soft-paper-dark-settings
+
+settings:
+
+-
+
+id: sp-see-more
+
+title: The "See More" Settings
+
+type: heading
+
+level: 2
+
+collapsed: true
+
+-
+
+id: sp-compact-all
+
+title: Condense everything
+
+description: Enables all condensing settings at once
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-compact-bases
+
+title: Make bases condensed
+
+description: Tighter vertical spacing in Bases plugin tables
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-compact-explorer
+
+title: Make file explorer condensed
+
+description: Tighter vertical spacing in the file explorer
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-compact-explorer-extra
+
+title: Make file explorer extra condensed
+
+description: Even tighter spacing (18px rows, matches sidebar panes)
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-compact-panes
+
+title: Make sidebar panes condensed
+
+description: Tighter vertical spacing in Tags, Properties, Backlinks, Outgoing Links, Outline, Bookmarks, and Search panes
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-compact-properties
+
+title: Make in-note properties condensed
+
+description: Tighter vertical spacing in the properties/metadata section of notes
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-compact-body
+
+title: Make body text condensed
+
+description: Tighter line spacing and paragraph gaps in the editor (keeps font size unchanged)
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-compact-settings
+
+title: Make settings popup condensed
+
+description: Tighter spacing in the Settings modal sidebar and main content
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-special-tweaks
+
+title: Special Tweaks
+
+type: heading
+
+level: 2
+
+collapsed: true
+
+-
+
+id: sp-hide-add-property
+
+title: Hide "Add property" button
+
+description: Remove the "Add property" button below properties
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-hide-scrollbars
+
+title: Hide scrollbars
+
+type: class-toggle
+
+default: true
+
+-
+
+id: sp-status-bar-blue
+
+title: Make status bar blue
+
+description: Toggle the lower-right file details bar between blue and beige
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-settings-transparent-80
+
+title: Make settings more see-through
+
+description: Settings window at 80% opacity for even more visibility
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-rainbow-folders
+
+title: Rainbow-Colored Folders
+
+description: Switch from ACE-colored (5 hues) to full 11-color rainbow folders (snippet provided by Joel Anderson)
+
+type: class-toggle
+
+default: false
+
+*/
+
+  
+
+/*===============================================================
+
+* CSS CUSTOM PROPERTIES — ხშირად გამოყენებული ფერების ცვლადები
+
+*===============================================================*/
+
+  
+
+:root {
+
+--sp-teal-link: #0AD1D0; /* ბმულების ფერი */
+
+--sp-teal-active: #0AD1D0; /* აქტიური ელემენტების ფერი */
+
+--sp-blue-light: #4B8FAB; /* ღია ცისფერი აქცენტი */
+
+--sp-teal-dark: #1A9CAA; /* მუქი თურქული ფერი */
+
+--sp-surface-gray: #232634;/* ზედაპირის ნაცრისფერი */
+
+--sp-cream-light: #DDD0C6; /* კრემისფერი ტონი */
+
+}
+
+  
+
+/*===============================================================
+
+* GLOBAL BASE STYLES & SCROLLBARS (გლობალური საბაზისო სტილები)
+
+*===============================================================*/
+
+  
+
+/* შიდა სათაურის ფერი ღია თემისთვის */
+
+.theme-light .inline-title {
+
+color: #575279;
+
+}
+
+  
+
+.metadata-properties-heading {
+
+--bold-weight: var(--font-medium);
+
+}
+
+  
+
+/* მეტამონაცემების ქვედა გამყოფი ხაზი */
+
+.metadata-container {
+
+border-bottom: 1px solid var(--background-modifier-border);
+
+padding-bottom: 16px;
+
+margin-bottom: 20px;
+
+}
+
+  
+
+/* ქოლაუთის (Callout) სათაურის გასწორება შუაში */
+
+.callout .callout-title {
+
+align-items: center;
+
+}
+
+  
+
+/* "Add property" ღილაკის დამალვა (მუშაობს შესაბამისი პარამეტრის ჩართვისას) */
+
+.sp-hide-add-property .metadata-add-button {
+
+display: none;
+
+}
+
+  
+
+/* სტანდარტული სქროლბარის ვიზუალი: თხელი და გამჭვირვალე */
+
+*::-webkit-scrollbar {
+
+width: 8px;
+
+height: 8px;
+
+}
+
+*::-webkit-scrollbar-track {
+
+background: transparent;
+
+}
+
+*::-webkit-scrollbar-thumb {
+
+background: rgba(0, 0, 0, 0.15);
+
+border-radius: 4px;
+
+}
+
+*::-webkit-scrollbar-thumb:hover {
+
+background: rgba(0, 0, 0, 0.25);
+
+}
+
+  
+
+/* სქროლბარების სრულად დამალვა ( Style Settings გადამრთველით ) */
+
+.sp-hide-scrollbars *::-webkit-scrollbar {
+
+display: none;
+
+}
+
+  
+
+/*===============================================================
+
+* LIGHT THEME — ღია თემის ფერების კონსოლიდირებული პალიტრა
+
+*===============================================================*/
+
+  
+
+.theme-light {
+
+/* ძირითადი ფერების კოდები (RGB ფორმატით) */
+
+--ctp-rosewater: 188, 112, 141;
+
+--ctp-flamingo: 214, 129, 125;
+
+--ctp-pink: 210, 112, 162;
+
+--ctp-mauve: 141, 141, 141;
+
+--ctp-red: 186, 113, 132;
+
+--ctp-maroon: 180, 99, 122;
+
+--ctp-peach: 221, 127, 103;
+
+--ctp-yellow: 209, 149, 72;
+
+--ctp-green: 91, 165, 123;
+
+--ctp-teal: 102, 158, 166;
+
+--ctp-sky: 40, 105, 131;
+
+--ctp-sapphire: 26, 125, 164;
+
+--ctp-blue: 40, 105, 131;
+
+--ctp-lavender: 154, 133, 174;
+
+--ctp-text: 87, 82, 121;
+
+--ctp-subtext1: 238, 101, 58;
+
+--ctp-subtext0: 12, 159, 206;
+
+--ctp-overlay2: 82, 82, 82;
+
+--ctp-overlay1: 204, 204, 204;
+
+--ctp-overlay0: 12, 159, 206;
+
+--ctp-surface2: 202, 193, 185;
+
+--ctp-surface1: 209, 201, 194;
+
+--ctp-surface0: 220, 211, 203;
+
+--ctp-base: 246, 246, 246; /* ცენტრალური ფურცლის ძირითადი ფონი light mode-ში */
+
+--ctp-mantle: 230, 219, 209;
+
+--ctp-crust: 221, 208, 198;
+
+  
+
+/* ფერების მიმაგრება Obsidian-ის სტანდარტულ ცვლადებზე */
+
+--mono-rgb-0: var(--ctp-crust);
+
+--mono-rgb-100: var(--ctp-text);
+
+--color-red-rgb: var(--ctp-red);
+
+--color-red: rgb(var(--ctp-red));
+
+--color-green-rgb: var(--ctp-green);
+
+--color-green: rgb(var(--ctp-green));
+
+--color-orange-rgb: var(--ctp-peach);
+
+--color-orange: rgb(var(--ctp-peach));
+
+--color-yellow-rgb: var(--ctp-yellow);
+
+--color-yellow: rgb(var(--ctp-yellow));
+
+--color-cyan-rgb: var(--ctp-sky);
+
+--color-cyan: rgb(var(--ctp-sky));
+
+--color-blue-rgb: var(--ctp-blue);
+
+--color-blue: rgb(var(--ctp-blue));
+
+--color-purple-rgb: var(--ctp-lavender);
+
+--color-purple: rgb(var(--ctp-lavender));
+
+--color-pink-rgb: var(--ctp-pink);
+
+--color-pink: rgb(var(--ctp-pink));
+
+/* ძირითადი ფონების სკალა */
+
+--color-base-00: rgb(var(--ctp-crust));
+
+--color-base-10: rgb(var(--ctp-mantle));
+
+--color-base-20: rgb(var(--ctp-base));
+
+--color-base-25: rgb(var(--ctp-surface0));
+
+--color-base-30: rgb(var(--ctp-surface1));
+
+--color-base-35: rgb(var(--ctp-surface2));
+
+--color-base-40: rgb(var(--ctp-overlay0));
+
+--color-base-50: rgb(var(--ctp-overlay1));
+
+--color-base-60: rgb(var(--ctp-overlay2));
+
+--color-base-70: rgb(var(--ctp-subtext0));
+
+--color-base-100: rgb(var(--ctp-text));
+
+/* ტექსტის მარკირების/ჰაილაითის ფერები */
+
+--text-highlight-bg: rgba(var(--ctp-yellow), 0.2);
+
+--text-highlight-bg-active: rgba(var(--ctp-yellow), 0.4);
+
+/* ფონის ძირითადი ფერები */
+
+--background-primary: rgb(var(--ctp-base));
+
+--background-primary-alt: rgb(var(--ctp-mantle));
+
+--background-secondary: rgb(var(--ctp-mantle));
+
+--background-secondary-alt: rgb(var(--ctp-crust));
+
+--background-modifier-hover: rgba(var(--ctp-text), 0.075);
+
+--background-modifier-form-field: rgba(var(--ctp-crust), 0.3);
+
+--background-modifier-border: rgb(var(--ctp-surface1));
+
+--background-modifier-border-hover: rgb(var(--ctp-surface2));
+
+--background-modifier-border-focus: rgb(var(--ctp-overlay0));
+
+/* ტექსტის ფერები */
+
+--text-normal: rgb(var(--ctp-text));
+
+--text-muted: rgb(var(--ctp-overlay2));
+
+--text-faint: rgb(var(--ctp-subtext0));
+
+color-scheme: light;
+
+}
+
+  
+
+/*===============================================================
+
+* DARK THEME — მუქი თემის ჰარმონიზაცია ცენტრალური ნაწილის ტონებთან
+
+*===============================================================*/
+
+  
+
+.theme-dark {
+
+/* აქ ხდება მარცხენა/მარჯვენა პანელების ფონების შეცვლა, რომ არ იყოს მუქი შავი */
+
+--ctp-base: 48, 52, 70; /* ცენტრალური ფურცლის ძირითადი ფონი */
+
+--ctp-mantle: 41, 44, 60; /* ალტერნატიული ფონი */
+
+--ctp-crust: 35, 38, 52; /* კიდეების/ჩარჩოების ფონი */
+
+--ctp-surface0: 58, 63, 85;
+
+--ctp-surface1: 70, 76, 102; /* ჩარჩოების და საზღვრების ფერი */
+
+--ctp-surface2: 85, 92, 122;
+
+--ctp-text: 198, 206, 239; /* ძირითადი ტექსტის ფერი */
+
+--ctp-subtext1: 181, 189, 220;/* მიყრუებული ტექსტი */
+
+--ctp-overlay2: 150, 160, 190;
+
+  
+
+/* ფონების მიმაგრება სისტემურ ცვლადებზე */
+
+--background-primary: rgb(var(--ctp-base));
+
+--background-primary-alt: rgb(var(--ctp-mantle));
+
+--background-secondary: rgb(var(--ctp-mantle));
+
+--background-secondary-alt: rgb(var(--ctp-crust));
+
+--background-modifier-border: rgb(var(--ctp-surface1));
+
+--background-modifier-border-hover: rgb(var(--ctp-surface2));
+
+  
+
+/* ტექსტების სტრუქტურა მუქ რეჟიმში */
+
+--text-normal: rgb(var(--ctp-text));
+
+--text-muted: rgb(var(--ctp-subtext1));
+
+--text-faint: rgb(var(--ctp-overlay2));
+
+  
+
+/* ბარათებისა და ტაბების კონტეინერების ფონის ერთიანობა */
+
+--card-background-color: var(--background-secondary);
+
+--card-foreground-color: var(--background-primary);
+
+--tab-container-background: var(--background-secondary-alt);
+
+color-scheme: dark;
+
+}
+
+  
+
+/* გვერდითი პანელების (Explorer, Search, TOC, Backlinks) ფონების სრული გათანაბრება */
+
+.theme-dark .workspace-split.mod-left-split,
+
+.theme-dark .workspace-split.mod-right-split,
+
+.theme-dark .workspace-ribbon.mod-left,
+
+.theme-dark .side-dock-actions,
+
+.theme-dark .workspace-tabs.mod-top {
+
+background-color: var(--background-secondary) !important;
+
+}
+
+  
+
+.theme-dark .workspace-split .workspace-leaf-content[data-type="file-explorer"],
+
+.theme-dark .workspace-split .workspace-leaf-content[data-type="search"],
+
+.theme-dark .workspace-split .workspace-leaf-content[data-type="table-of-contents"],
+
+.theme-dark .workspace-split .workspace-leaf-content[data-type="backlink"],
+
+.theme-dark .workspace-split .workspace-leaf-content[data-type="localgraph"] {
+
+background-color: var(--background-primary) !important;
+
+border-color: var(--background-modifier-border) !important;
+
+}
+
+  
+
+/* სათაურების (H1-H6) ინდივიდუალური ფერები */
+
+body {
+
+--h1-color: #BA7184; /* მთავარი სათაური (H1) */
+
+--h2-color: #DD7F67; /* H2 სათაური */
+
+--h3-color: #6E9A8D; /* H3 სათაური */
+
+--h4-color: #5BA57B; /* H4 სათაური */
+
+--h5-color: #9A85AE; /* H5 სათაური */
+
+--h6-color: #8D8D8D; /* H6 სათაური */
+
+}
+
+  
+  
+  
+
+/*===============================================================
+
+* MOBILE RESPONSIVE TWEAKS — მობილური ვერსიის ადაპტაცია კოდის შემდეგ ქვედა ნაწილში :
+
+( აწი ქვემოთ და აქამდე ზედა კოდი ერთმანეთს ხელს არ უშლის )
+
+*===============================================================*/
+
+  
+
+@media screen and (max-width: 768px) {
+
+/* მობილურზე ვმალავთ გვერდით პანელებს ან ვუცვლით ქცევას, რომ კონტენტი არ გაიჭედოს */
+
+.page > .left-sidebar,
+
+.page > .right-sidebar {
+
+display: none !important; /* დროებით ვმალავთ გვერდებს, რომ მხოლოდ მთავარი ტექსტი ჩანდეს სრულად */
+
+}
+
+  
+
+/* მთავარი კონტენტის არეალს ვუწესებთ სრულ სიგანეს და კომფორტულ პადინგებს */
+
+.page > .center {
+
+width: 100% !important;
+
+padding: 0 16px !important;
+
+}
+
+  
+
+/* ფონტების და სათაურების ავტომატური შემცირება მობილურისთვის, რომ არ გასცდეს ეკრანს */
+
+body {
+
+font-size: 15px !important;
+
+}
+
+h1 {
+
+font-size: 1.8rem !important;
+
+}
+
+h2 {
+
+font-size: 1.4rem !important;
+
+}
+
+}
+
+  
+  
+  
+
+/*===============================================================
+
+* QUARTZ 5 FIXED SIDEBAR & PAGE WIDTH ADJUSTMENT
+
+*===============================================================*/
+
+  
+
+/* 1. ვზრდით მთლიანი საიტის კონტეინერის მაქსიმალურ სიგანეს, რომ ყველაფერი ეტეოდეს */
+
+.page, .page-layout, .center {
+
+max-width: 1450px !important; /* საჭიროების შემთხვევაში შეგიძლიათ 1500px-მდეც გაზარდოთ */
+
+}
+
+  
+
+/* 2. ვზრდით მარცხენა პანელის სიგანეს ზუსტად ისე, როგორც გსურდათ */
+
+div.left.sidebar,
+
+.sidebar.left {
+
+width: 320px !important;
+
+min-width: 320px !important;
+
+flex: 0 0 320px !important;
+
+}
+
+  
+
+/* 3. ვურჩენთ შიდა კონტენტს სრულ სიგანეს */
+
+.sidebar.left .sidebar-content,
+
+div[id*="explorer-"] .explorer-content {
+
+width: 100% !important;
+
+}
