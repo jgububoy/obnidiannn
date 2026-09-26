@@ -1,7 +1,15 @@
 ---
-title: welcom to quartzz
+title: Welcome to My Knowledge Base
 ---
-# Wellcom !!!
 
-[[win11 - new users & passwords]] 
+მოგესალმებით ჩემს პირად სივრცეში! აქ თავმოყრილია ჩემი ჩანაწერები სხვადასხვა ტექნოლოგიებზე, ქსელებზე და სისტემურ ადმინისტრირებაზე.
 
+## ძირითადი სექციები
+
+- [[Apple]]
+- [[Cisco]]
+- [[Git]]
+- [[Linux]]
+- [[Windows]]
+
+--- > ეს გვერდი ავტომატურად გენერირდება Quartz-ის მიერ.
