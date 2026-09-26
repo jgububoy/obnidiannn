@@ -17,8 +17,7 @@ sourse:
 
 ინსტალაციის პროცესში ***error*** -ს აგდებს ხოლმე...
 
-![413x255](_attachments/a3c4572cf17d8de18920af05536d1049.png)
-.
+![[CleanShot 2026-09-26 at 18.24.36@2x.png]]
 ## 2. windows 11 local user
 
 [Как войти в Windows 11 без учетной записи Microsoft при первом запуске - YouTube](https://www.youtube.com/watch?v=yS-o-PV_EFY)
