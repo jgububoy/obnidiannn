@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: plausible
   locale: en-US
-  baseUrl: jgububoy.github.io/obsidiannn
+  baseUrl: https://jgububoy.github.io/obnidiannn/
   ignorePatterns:
     - private
     - templates
