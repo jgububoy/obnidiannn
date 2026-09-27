@@ -66,13 +66,10 @@ on windows powershell :     ping -t 172.20.1.120|Foreach{"{0} - {1}" -f (Get-Dat
 nslookup google.com
 ```
 
-
-##### windows აჩქარება
-[windows-ის აჩქარება](windows-ის%20აჩქარება.md) 
-
 ##### windows აფდეითების გამორთვა
- [windows update turn off](windows%20update%20turn%20off.md)
-  
+
+[Как полностью отключить обновления Windows 11 - YouTube](https://www.youtube.com/watch?v=hxImrN18GCY)
+
 ##### Robocopy to bat file
 [ფაილების დაკოპირება window-ში ( robocopy )](ფაილების%20დაკოპირება%20window-ში%20(%20robocopy%20).md) 
 
@@ -82,8 +79,10 @@ robocopy Destination-A Destination-B /e         (ამატებს ახა
 ```
 
 ##### ჰიბერნაცია 
-[ჰიბერნაცია](ჰიბერნაცია%20_%20ჩართვა-გამორთვა.md)
-
+```shell
+powercfg -h off  - გამორთვა
+powercfg -h on   - ჩართვა
+```
 ##### თამაშებში ინსტალაციისას რუსული შრიფტი. (Change system locale). win11
 
 ```bash
