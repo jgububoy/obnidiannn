@@ -9,7 +9,7 @@ title: 🔥Quartz5
 - [[Apple]]
 - [[Cisco]]
 - [[Git]]
-- [[Linux]]
+- [[Linux/Linux ბრძანების სინტაქსი]]
 - [[Windows]]
 
 --- > ეს გვერდი ავტომატურად გენერირდება Quartz-ის მიერ.
