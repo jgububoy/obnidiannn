@@ -1,0 +1,33 @@
+// Gruvbox Dark Theme for Quartz v4
+:root {
+  --light: #282828;      /* მთავარი ფონი (bg0) */
+  --lightgray: #3c3836;  /* ჩარჩოები, ბლოკების ფონი (bg1) */
+  --gray: #928374;       /* დამხმარე ტექსტი / აიქონები (gray) */
+  --darkgray: #ebdbb2;   /* ძირითადი ტექსტი (fg1) */
+  --dark: #fbf1c7;       /* სათაურები (fg0) */
+  --secondary: #fe8019;  /* ბმულები და აქცენტები (Gruvbox Orange) */
+  --tertiary: #fabd2f;   /* ჰოვერ ეფექტები (Gruvbox Yellow) */
+  --highlight: rgba(250, 189, 47, 0.15); /* მონიშნული ტექსტის ფონი */
+}
+
+// Gruvbox Light Theme (თუ ვინმემ ლაით რეჟიმი ჩართო)
+.lightmode {
+  --light: #fbf1c7;      /* ღია ფონი */
+  --lightgray: #ebdbb2;  /* ღია ჩარჩოები */
+  --gray: #7c6f64;       /* ღია ნაცრისფერი ტექსტი */
+  --darkgray: #3c3836;   /* მუქი ძირითადი ტექსტი */
+  --dark: #282828;       /* მუქი სათაურები */
+  --secondary: #af3a03;  /* ბმულები (მუქი ნარინჯისფერი) */
+  --tertiary: #b57614;   /* ჰოვერ ეფექტები */
+  --highlight: rgba(181, 118, 20, 0.15);
+}
+
+// დამატებითი სტილი კოდის ბლოკებისთვის (Gruvbox სტილი)
+pre {
+  background-color: #1d2021 !important;
+  border: 1px solid #3c3836;
+}
+
+code {
+  color: #fb4934 !important;
+}
