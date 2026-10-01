@@ -1,7 +1,7 @@
 ---
 title: 🔥 Wellcome To Vault
 ---
-![_attachments/images.jpeg](_attachments/images.jpeg)
+![](_attachments/a8d97deb2cb7c2bb1d86a19351a79570.jpg)
 <br>
 მოგესალმებით ჩემს პირად სივრცეში! აქ თავმოყრილია ჩემი ჩანაწერები სხვადასხვა ტექნოლოგიებზე, ქსელებზე და სისტემურ ადმინისტრირებაზე.
 .
